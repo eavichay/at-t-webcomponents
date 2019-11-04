@@ -22,11 +22,14 @@ class PopupMenu extends HTMLElement {
                     }
                 </style>
                 <span id="trigger">
+                    <span id="label"></span>
                     <slot name="trigger"></slot>
                 </span>
                 <span id="wrapper">
                     <slot></slot>
                 </span>`;
+
+        this._label = undefined;
 
         /** @type HTMLSpanElement */
         this.wrapper = this.shadowRoot.querySelector('#wrapper');
@@ -34,21 +37,36 @@ class PopupMenu extends HTMLElement {
         /** @type HTMLSpanElement */
         this.trigger = this.shadowRoot.querySelector('#trigger');
 
+        /** @type HTMLSpanElement */
+        this.labelElement = this.shadowRoot.querySelector('#label');
+
         this.onWindowClick = this.onWindowClick.bind(this);
         this.trigger.addEventListener('mousedown', () => this.open());
         this.addEventListener('selected', () => this.close());
     }
 
     close () {
-        this.removeAttribute('open');
+        this.removeAttribute('open');   
     }
 
     open () {
         this.setAttribute('open', '');
         const menu = this.querySelector('a-menu');
         if (menu) {
-            menu.focus();
+            menu.selectFirst();
+            requestAnimationFrame(() => {
+                menu.focus();
+            })
         }
+    }
+
+    get label () {
+        return this._label;
+    }
+
+    set label (value) {
+        this._label = value;
+        this.labelElement.innerText = value;
     }
 
     /**

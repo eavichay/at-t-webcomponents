@@ -65,7 +65,7 @@ class Menu extends HTMLElement {
 
   connectedCallback () {
     if (!this.hasAttribute('tabindex')) {
-        this.setAttribute('tabindex', -1);
+        this.setAttribute('tabindex', 0);
     }
   }
 
@@ -117,7 +117,7 @@ class Menu extends HTMLElement {
   }
 
   focus() {
-      this.selectFirst();
+    super.focus();
   }
 
   getValidElements () {

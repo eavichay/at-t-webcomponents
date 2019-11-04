@@ -1,33 +1,3 @@
-const template = /*html*/ `
-  <style>
-    :host([disabled]) {
-      opacity: 0.6;
-    }
-    :host {
-      user-select: none;
-      font-family: "Open Sans", sans-serif;
-      font-size: 13px;
-      color: var(--black, #434343);
-      padding: 5px 15px 5px 5px;
-      border-bottom: 1px dotted var(--grey-lines) grey;
-      text-align: left;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-
-    :host(:last-of-type) {
-      border-bottom: none;
-    }
-    :host(:hover:not([disabled])), :host([focused]) {
-      cursor: pointer;
-      color: var(--black, black);
-      background-color: var(--selection-highlight, #ccf0ea);
-    }
-  </style>
-  <slot></slot>
-`;
-
 class MenuItem extends HTMLElement {
   /**
    * @extends FocusableMixin(HTMLElement)
@@ -39,7 +9,35 @@ class MenuItem extends HTMLElement {
      * @type {*}
      */
     this.value = undefined;
-    this.attachShadow({ mode: 'open' }).innerHTML = template;
+    this.attachShadow({ mode: 'open' }).innerHTML = /*html*/ `
+    <style>
+      :host([disabled]) {
+        opacity: 0.6;
+      }
+      :host {
+        user-select: none;
+        font-family: "Open Sans", sans-serif;
+        font-size: 13px;
+        color: var(--black, #434343);
+        padding: 5px 15px 5px 5px;
+        border-bottom: 1px dotted var(--grey-lines) grey;
+        text-align: left;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+  
+      :host(:last-of-type) {
+        border-bottom: none;
+      }
+      :host(:hover:not([disabled])), :host([focused]) {
+        cursor: pointer;
+        color: var(--black, black);
+        background-color: var(--selection-highlight, #ccf0ea);
+      }
+    </style>
+    <slot></slot>
+  `;
 
     this.addEventListener('keydown', e => this.keypressHandler(e));
     this.addEventListener('mouseup', e => this.notifySelected(e));
@@ -99,7 +97,7 @@ class MenuItem extends HTMLElement {
         new CustomEvent('selected', {
           bubbles: true,
           composed: true,
-          detail: this.value || this,
+          detail: this.value || this.innerText || this,
         })
       );
     }
