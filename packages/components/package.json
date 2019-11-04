@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "showroom --port 8081"
+    "start": "showroom --port 8081",
+    "test": "mocha ./test --recursive --exit"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "mocha": "^6.2.2",
     "showroom": "^0.9.3"
   }
 }
