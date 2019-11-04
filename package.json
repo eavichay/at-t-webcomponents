@@ -1,0 +1,22 @@
+{
+  "name": "at-t-webcomponents",
+  "version": "1.0.0",
+  "description": "Code examples and usage of web components in multiple frameworks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eavichay/at-t-webcomponents.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eavichay/at-t-webcomponents/issues"
+  },
+  "homepage": "https://github.com/eavichay/at-t-webcomponents#readme",
+  "devDependencies": {
+    "lerna": "^3.4.3"
+  }
+}
