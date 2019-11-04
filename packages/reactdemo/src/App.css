@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+.menu-header {
+  color: black;
+  width: 200px;
+  text-align: left;
+  padding: 5px;
+  font-size: 18px;
+}
