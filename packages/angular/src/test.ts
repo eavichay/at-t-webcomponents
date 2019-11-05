@@ -7,6 +7,10 @@ import {
   platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
+import 'components/menu/a-menu.js';
+import 'components/menu/a-menu-item.js';
+import 'components/menu/a-popup-menu.js';
+
 declare const require: any;
 
 // First, initialize the Angular testing environment.

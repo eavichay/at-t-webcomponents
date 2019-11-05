@@ -26,6 +26,15 @@ describe('a-popup-menu', () => {
             assert.strictEqual(await showroom.isVisible(menu), true);
         });
 
+        it('Should close when pressing ESCAPE', async () => {
+            const labelEl = await showroom.find('// span#label');
+            await labelEl.hover();
+            await showroom.page.mouse.down();
+            assert.strictEqual(await showroom.isVisible(menu), true);
+            await showroom.page.keyboard.press('Escape');
+            assert.strictEqual(await showroom.isVisible(menu), false);
+        });
+
         it('Should select an item', async () => {
             let events;
             const labelEl = await showroom.find('// span#label');

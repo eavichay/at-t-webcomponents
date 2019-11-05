@@ -43,6 +43,11 @@ class PopupMenu extends HTMLElement {
         this.onWindowClick = this.onWindowClick.bind(this);
         this.trigger.addEventListener('mousedown', () => this.open());
         this.addEventListener('selected', () => this.close());
+        this.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                this.close();
+            }
+        });
     }
 
     close () {
